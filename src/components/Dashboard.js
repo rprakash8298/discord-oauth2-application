@@ -14,14 +14,14 @@ const Dashboard = () => {
     const [guildId, setGuildId] = useState([])
     const [members, setMembers] = useState(discord_dummy)
   useEffect(async () => {
-    //   const code = new URLSearchParams(window.location.search).get('code')
-    //     console.log('***',code)
-    //     if (code) {
-    //        await codeData(code)
-    //         history.push('/dashboard')
+      const code = new URLSearchParams(window.location.search).get('code')
+        console.log('***',code)
+        if (code) {
+           await codeData(code)
+            history.push('/dashboard')
           
-    // }
-    // console.log(localStorage.getItem('token'))
+    }
+    console.log(localStorage.getItem('token'))
     if (localStorage.getItem('token')) {
           
         
