@@ -6,16 +6,16 @@ import data from './data/data'
 import vid from './media/Planet Earth Revolving.mp4'
 
 const Login = () => {
-    // const history = useHistory()
+    const history = useHistory()
   
     const url = `https://discord.com/api/v8/oauth2/authorize?client_id=${CLIENT_ID}&scope=identify&response_type=code&redirect_uri=${redirects}`
     
-    useEffect(() => {
+    useEffect(async () => {
         const code = new URLSearchParams(window.location.search).get('code')
         // console.log('***',code)
         if (code) {
-            data(code)
-            // history.push('/dashboard')
+            await data(code)
+            history.push('/dashboard')
           
         }  
     },[])

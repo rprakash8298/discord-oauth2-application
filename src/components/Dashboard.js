@@ -1,24 +1,37 @@
 import React from 'react'
 import {useState,useEffect} from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Redirect } from 'react-router-dom'
+import codeData from './data/data'
 import './dashboard.css'
 import {discord_dummy} from '../data_discord'
 
 const Dashboard = () => {
-    const history = useHistory()
+  const history = useHistory()
+   
     const [username, setUsername] = useState([])
     // const [userId, setUserId] = useState([])
     const [userdiscriminator, setUserdiscriminator] = useState([])
     const [guildId, setGuildId] = useState([])
     const [members, setMembers] = useState(discord_dummy)
-    useEffect(async () => {
+  useEffect(async () => {
+    //   const code = new URLSearchParams(window.location.search).get('code')
+    //     console.log('***',code)
+    //     if (code) {
+    //        await codeData(code)
+    //         history.push('/dashboard')
+          
+    // }
+    // console.log(localStorage.getItem('token'))
+    if (localStorage.getItem('token')) {
+          
+        
           const userResult = await fetch('https://discord.com/api/users/@me', {
 	        headers: {
 	     	authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
          	},
           });
         const data = await userResult.json()
-        // console.log(data)
+        console.log(data)
         setUsername(data)
         
         // setUserId(data.id)
@@ -37,12 +50,7 @@ const Dashboard = () => {
         })
         // const ids = (guildId.map((guild) => { return guild.id }))
         // console.log(ids)
-        const userGuildsMembers = await fetch('http://cors-anywhere.herokuapp.com/https://discord.com/api/users/@me/guilds/831833676367134730/channels', {
-	        headers: {
-	     	authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
-         	},
-         });
-         console.log(await userGuildsMembers.json())
+        }
     }, [])
     
     const logoutHandler = () => {
@@ -56,7 +64,8 @@ const Dashboard = () => {
     // }
 
     return (
-        <>
+      <>
+        {/* {token ? <Redirect to='/' /> : ''} */}
           <div className="grid">
       <div className="nav">
         <div className="nav__container">
