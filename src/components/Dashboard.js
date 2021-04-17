@@ -31,7 +31,7 @@ const Dashboard = () => {
          	},
           });
         const data = await userResult.json()
-        console.log(data)
+        // console.log(data)
         setUsername(data)
         
         // setUserId(data.id)
@@ -43,13 +43,12 @@ const Dashboard = () => {
          });
         const data1 = await userGuilds.json()
         // setGuildId(data1)
-        console.log(data1)
+        // console.log(data1)
          data1.map(data => {
             // console.log(data)
             setGuildId((prevRes) => [...prevRes,data])
         })
-        // const ids = (guildId.map((guild) => { return guild.id }))
-        // console.log(ids)
+        
         }
     }, [])
     
@@ -57,11 +56,7 @@ const Dashboard = () => {
         localStorage.removeItem('token')
         history.push('/')
     }
-    // const memberHandler = () => {
-    //     members.map((el) => {
-    //         console.log(el)
-    //     })
-    // }
+    
 
     return (
       <>
