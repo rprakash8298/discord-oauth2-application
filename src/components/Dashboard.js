@@ -37,9 +37,9 @@ const Dashboard = () => {
         })
         // const ids = (guildId.map((guild) => { return guild.id }))
         // console.log(ids)
-        const userGuildsMembers = await fetch('http://cors-anywhere.herokuapp.com/https://discord.com/api/users/@me/guilds/831833676367134730/channels', {
+        const userGuildsMembers = await fetch('http://cors-anywhere.herokuapp.com/https://discord.com/api/users/@me/guilds/831833676367134730/members', {
 	        headers: {
-	     	authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
+	     	authorization: `Bot ODMxMDc4MzEyNzI5Mzc4ODI2.YHP__g.nQ17_-9lRbm_3MpWfl3sRnDCook`,
          	},
          });
          console.log(await userGuildsMembers.json())
